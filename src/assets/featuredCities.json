@@ -1,0 +1,22 @@
+[
+  {
+    "img": "/images/sydney.jpg",
+    "name": "Sydney",
+    "numberProperties": "527 properties"
+  },
+  {
+    "img": "/images/gold.jpg",
+    "name": "Gold Coast",
+    "numberProperties": "412 properties"
+  },
+  {
+    "img": "/images/melbourne.jpg",
+    "name": "Melbourne",
+    "numberProperties": "320 properties"
+  },
+  {
+    "img": "/images/canberra.jpg",
+    "name": "Canberra",
+    "numberProperties": "416 properties"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "img": "/images/hotels.jpg",
+    "title": "Hotels"
+  },
+  {
+    "img": "/images/apartments.jpg",
+    "title": "Apartments"
+  },
+  {
+    "img": "/images/resorts.jpg",
+    "title": "Resorts"
+  },
+  {
+    "img": "/images/villas.jpg",
+    "title": "Villas"
+  },
+  {
+    "img": "/images/hostels.jpg",
+    "title": "Hostels"
+  }
+]

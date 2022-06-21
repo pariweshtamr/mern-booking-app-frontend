@@ -1,0 +1,30 @@
+.navbar {
+  background: #393d45;
+  height: 50px;
+}
+.navContainer {
+  color: #f4f5ee;
+}
+.logoLink {
+  text-decoration: none;
+  color: #f4f5ee;
+
+  &:hover {
+    color: #eeb953;
+  }
+}
+.logo {
+  font-weight: 500;
+  font-size: 20px;
+}
+.navButton {
+  margin-left: 20px;
+  border: 1px solid #eeb953;
+  padding: 5px 10px;
+  cursor: pointer;
+  background: transparent;
+  color: #f4f5ee;
+  &:hover {
+    color: #eeb953;
+  }
+}
