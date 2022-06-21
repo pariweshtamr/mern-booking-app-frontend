@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch'
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    'http://localhost:8000/api/hotels/city?cities=Sydney,Melbourne,Gold Coast,Canberra',
+    'http://localhost:8000/api/hotels/city?cities=sydney,melbourne,gold coast,canberra',
   )
 
   return (
