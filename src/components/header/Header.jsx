@@ -39,6 +39,7 @@ const Header = ({ type }) => {
   })
 
   const navigate = useNavigate()
+  const { user } = useSelector((state) => state.user)
 
   const handleOption = (name, operation) => {
     setoptions((prev) => {
@@ -93,7 +94,9 @@ const Header = ({ type }) => {
               Get rewarded for your travels - Unlock instant savings of 10%or
               more with a free Booking App account
             </p>
-            <button className="headerButton">Login / Register</button>
+            {!user && (
+              <button className="headerButton">Login / Register</button>
+            )}
 
             <Container className="headerSearch">
               <Row className="headerSearchRow">

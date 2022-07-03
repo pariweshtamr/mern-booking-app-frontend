@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { Container } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { userLogin } from "../../redux/User/UserAction"
 import "./login.scss"
 
@@ -12,6 +12,7 @@ const initialState = {
 
 const Login = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const uRef = useRef()
   const passRef = useRef()
   const { isLoading, isLoggedIn, error } = useSelector((state) => state.user)
@@ -23,7 +24,7 @@ const Login = () => {
     const username = uRef.current?.value
     const password = passRef.current?.value
 
-    dispatch(userLogin({ username, password }))
+    dispatch(userLogin({ username, password })) && navigate("/")
   }
 
   return (
@@ -74,7 +75,11 @@ const Login = () => {
                 )}
               </button>
             </div>
-            <button className="bttn login-btn" onClick={handleOnClick}>
+            <button
+              disabled={isLoading}
+              className="bttn login-btn"
+              onClick={handleOnClick}
+            >
               Submit
             </button>
 
