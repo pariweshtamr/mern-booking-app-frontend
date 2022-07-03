@@ -15,7 +15,7 @@ const Login = () => {
   const uRef = useRef()
   const passRef = useRef()
   const { isLoading, isLoggedIn, error } = useSelector((state) => state.user)
-  const [loginInfo, setLoginInfo] = useState()
+  const [show, setShow] = useState(false)
 
   const handleOnClick = async (e) => {
     e.preventDefault()
@@ -39,7 +39,10 @@ const Login = () => {
           />
 
           <h1>LOGIN</h1>
+
           <div className="login-form">
+            {error && <span className="text-danger">{error.message}</span>}
+
             <input
               type="text"
               placeholder="USERNAME"
@@ -47,28 +50,45 @@ const Login = () => {
               className="login-input"
               ref={uRef}
             />
-            <input
-              type="password"
-              placeholder="PASSWORD"
-              id="password"
-              className="login-input"
-              ref={passRef}
-            />
-            <button className="login-btn" onClick={handleOnClick}>
-              SUBMIT
+            <div className="pass-group">
+              <input
+                type={show ? "text" : "password"}
+                placeholder="PASSWORD"
+                id="password"
+                className="login-input"
+                ref={passRef}
+              />
+              <button
+                className="showPass-btn"
+                onClick={() => {
+                  setShow(!show)
+                }}
+              >
+                {!show ? (
+                  <i className="far fa-eye" />
+                ) : (
+                  <i
+                    className="far fa-eye-slash"
+                    onClick={() => setShow(show)}
+                  />
+                )}
+              </button>
+            </div>
+            <button className="bttn login-btn" onClick={handleOnClick}>
+              Submit
             </button>
-            <span className="toggle">--</span>
-            <span className="ripple"></span>
-          </div>
 
-          <div className="links">
-            <Link to="/register">REGHISTER</Link>
-            <Link to="/forgot-password">FORGOT PASSWORD</Link>
+            <div className="links">
+              <Link to="/register" className="bttn reg-btn">
+                Register
+              </Link>
+              <Link to="/forgot-password" className="bttn forgot-btn">
+                Forgot Password?
+              </Link>
+            </div>
           </div>
         </div>
         <div className="circle circle-two"></div>
-
-        {error && <span>{error.message}</span>}
       </Container>
     </div>
   )
