@@ -1,20 +1,18 @@
-import { Container } from 'react-bootstrap'
-import './propertyList.scss'
-import propertyLists from '../../assets/propertyList.json'
-import useFetch from '../../hooks/useFetch'
+import { Container } from "react-bootstrap"
+import "./propertyList.scss"
+import propertyLists from "../../assets/propertyList.json"
+import useFetch from "../../hooks/useFetch"
 
 const PropertyList = () => {
   const { data, loading, error } = useFetch(
-    'http://localhost:8000/api/hotels/type',
+    "http://localhost:8000/api/hotels/type"
   )
-
-  console.log(data)
 
   return (
     <Container>
       <div className="pList">
         {loading ? (
-          'Loading...'
+          "Loading..."
         ) : (
           <>
             {data.map((property, i) => (

@@ -1,20 +1,18 @@
-import './bestProperties.scss'
-import bestProperty from '../../assets/bestProperties.json'
-import { Container } from 'react-bootstrap'
-import useFetch from '../../hooks/useFetch'
+import "./bestProperties.scss"
+import bestProperty from "../../assets/bestProperties.json"
+import { Container } from "react-bootstrap"
+import useFetch from "../../hooks/useFetch"
 
 const BestProperties = () => {
   const { data, loading, error } = useFetch(
-    'http://localhost:8000/api/hotels?featured=true',
+    "http://localhost:8000/api/hotels?featured=true"
   )
-
-  console.log(data)
 
   return (
     <Container>
       <div className="best-properties">
         {loading ? (
-          'LOADING...'
+          "LOADING..."
         ) : (
           <>
             {data.map((property) => (

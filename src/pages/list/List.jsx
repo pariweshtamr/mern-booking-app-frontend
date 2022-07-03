@@ -1,18 +1,18 @@
-import { format } from 'date-fns'
-import React, { useState } from 'react'
-import { Col, Container } from 'react-bootstrap'
-import { DateRange } from 'react-date-range'
-import { useLocation } from 'react-router-dom'
-import Header from '../../components/header/Header'
-import Navbar from '../../components/navbar/Navbar'
-import SearchItem from '../../components/searchItem/SearchItem'
-import useFetch from '../../hooks/useFetch'
-import './list.scss'
+import { format } from "date-fns"
+import React, { useState } from "react"
+import { Col, Container } from "react-bootstrap"
+import { DateRange } from "react-date-range"
+import { useLocation } from "react-router-dom"
+import Header from "../../components/header/Header"
+import Navbar from "../../components/navbar/Navbar"
+import SearchItem from "../../components/searchItem/SearchItem"
+import useFetch from "../../hooks/useFetch"
+import "./list.scss"
 
 const List = () => {
   const location = useLocation()
   const [destination, setDestination] = useState(location.state.destination)
-  const [date, setDate] = useState(location.state.date)
+  const [dates, setDates] = useState(location.state.dates)
   const [options, setoptions] = useState(location.state.options)
   const [openDate, setOpenDate] = useState(false)
   const [min, setMin] = useState(undefined)
@@ -21,7 +21,7 @@ const List = () => {
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${
       max || 999
-    }`,
+    }`
   )
 
   const handleOnClick = () => {
@@ -46,15 +46,15 @@ const List = () => {
               <span
                 className="date-span"
                 onClick={() => setOpenDate(!openDate)}
-              >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-                date[0].endDate,
-                'MM/dd/yyyy',
+              >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                dates[0].endDate,
+                "MM/dd/yyyy"
               )} `}</span>
               {openDate && (
                 <DateRange
-                  onChange={(item) => setDate([item.selection])}
+                  onChange={(item) => setDates([item.selection])}
                   minDate={new Date()}
-                  ranges={date}
+                  ranges={dates}
                 />
               )}
             </div>
@@ -115,7 +115,7 @@ const List = () => {
           </Col>
           <Col md="9" className="list-result">
             {loading ? (
-              'LOADING...'
+              "LOADING..."
             ) : (
               <>
                 {data.map((item) => (
