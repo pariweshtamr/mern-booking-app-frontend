@@ -13,13 +13,16 @@ import "./hotel.scss"
 import MailList from "../../components/mailList/MailList"
 import Footer from "../../components/footer/Footer"
 import useFetch from "../../hooks/useFetch"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import Reserve from "../../components/reserve/Reserve"
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0)
   const [open, setOpen] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   const id = location.pathname.split("/")[2]
 
@@ -28,6 +31,8 @@ const Hotel = () => {
   )
 
   const { isLoading, search } = useSelector((state) => state.search)
+
+  const { user } = useSelector((state) => state.user)
 
   const { dates, options } = search
 
@@ -75,6 +80,14 @@ const Hotel = () => {
     }
 
     setSlideNumber(newSlideNumber)
+  }
+
+  const handleOnClick = () => {
+    if (user) {
+      setOpenModal(true)
+    } else {
+      navigate("/login")
+    }
   }
   return (
     <div>
@@ -152,15 +165,16 @@ const Hotel = () => {
                   <b>${days * data.cheapestPrice * options.room} </b> ({days}{" "}
                   nights)
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick={handleOnClick}>Reserve or Book Now!</button>
               </Col>
             </Row>
           </div>
         </Container>
       )}
-
       <MailList />
       <Footer />
+
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   )
 }
