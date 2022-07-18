@@ -1,17 +1,17 @@
-import './featured.scss'
-import featuredCities from '../../assets/featuredCities.json'
-import { Container } from 'react-bootstrap'
-import useFetch from '../../hooks/useFetch'
+import "./featured.scss"
+import featuredCities from "../../assets/featuredCities.json"
+import { Container } from "react-bootstrap"
+import useFetch from "../../hooks/useFetch"
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    'http://localhost:8000/api/hotels/city?cities=sydney,melbourne,gold coast,canberra',
+    "http://localhost:8000/api/hotels/city?cities=sydney,melbourne,gold coast,canberra"
   )
 
   return (
     <Container className="featured-container">
       {loading ? (
-        'Loading...'
+        "LOADING..."
       ) : (
         <>
           <div className="featured">
@@ -21,7 +21,7 @@ const Featured = () => {
                 <div className="featuredTitles">
                   <h1>{city.name}</h1>
                   <h2>
-                    {data[i]} {data[i] > 1 ? 'properties' : 'property'}
+                    {data[i]} {data[i] > 1 ? "properties" : "property"}
                   </h2>
                 </div>
               </div>

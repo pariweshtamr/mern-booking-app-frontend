@@ -8,7 +8,7 @@ export const userLogin = (loginInfo) => async (dispatch) => {
   const data = await loginUser(loginInfo)
 
   if (data?.status === "success") {
-    return dispatch(loginSuccess(data))
+    return dispatch(loginSuccess(data.details))
   }
 
   dispatch(loginFail(data))

@@ -30,6 +30,7 @@ const Hotel = () => {
     `http://localhost:8000/api/hotels/find/${id}`
   )
 
+  console.log(data)
   const { isLoading, search } = useSelector((state) => state.search)
 
   const { user } = useSelector((state) => state.user)
@@ -44,27 +45,6 @@ const Hotel = () => {
   }
 
   const days = dayDifference(dates[0].endDate, dates[0].startDate)
-
-  const photos = [
-    {
-      src: "/images/novotel/1.jpg",
-    },
-    {
-      src: "/images/novotel/2.jpg",
-    },
-    {
-      src: "/images/novotel/3.jpg",
-    },
-    {
-      src: "/images/novotel/4.jpg",
-    },
-    {
-      src: "/images/novotel/5.jpg",
-    },
-    {
-      src: "/images/novotel/6.jpg",
-    },
-  ]
 
   const handleOpen = (i) => {
     setSlideNumber(i)
@@ -111,7 +91,7 @@ const Hotel = () => {
               />
               <div className="slider-wrapper">
                 <img
-                  src={photos[slideNumber].src}
+                  src={data?.photos[slideNumber]}
                   alt=""
                   className="slider-img"
                 />
